@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,31 +16,15 @@
       height: 100vh;
       background-color: #f4f4f4;
     }
-    #root {
+    iframe {
       width: 400px;
       height: 600px;
-      border: 1px solid #ccc;
-      background: #fff;
+      border: none;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script>
-    window.wxOConfiguration = {
-      orchestrationID: "20250430-1552-4383-00f2-8e9318aa2f1b_20250501-1814-2773-9095-04757cf91ef5",
-      hostURL: "https://dl.watson-orchestrate.ibm.com",
-      rootElementID: "root",
-      chatOptions: { agentId: "47602a97-e456-4999-9f29-4f132e584862" }
-    };
-    setTimeout(function () {
-      const script = document.createElement('script');
-      script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
-      script.addEventListener('load', function () { wxoLoader.init(); });
-      document.head.appendChild(script);
-    }, 0);
-  </script>
+  <iframe src="https://dl.watson-orchestrate.ibm.com/wxochat?agentId=47602a97-e456-4999-9  <iframe src="https://dl.watson-orchestrate.ibm.com/wxochat?agentId=47602a97-e456-4999-9862</iframe>
 </body>
-</html>
 
