@@ -30,7 +30,25 @@
   <!-- Container where Orchestrate will render the chat -->
   <div id="root"></div>
 
-  <!-- External JS file -->
-  main.js</script>
-</</body>
+  <!-- Orchestrate Embed Loader -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      window.wxOConfiguration = {
+        orchestrationID: "20250430-1552-4383-00f2-8e9318aa2f1b_20250501-1814-2773-9095-04757cf91ef5",
+        hostURL: "https://dl.watson-orchestrate.ibm.com",
+        rootElementID: "root",
+        chatOptions: {
+          agentId: "47602a97-e456-4999-9f29-4f132e584862",
+          agentEnvironmentId: "4744eff6-92f8-4757-8cba-453f6a1a1542"
+        }
+      };
 
+      const script = document.createElement("script");
+      script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+      script.onload = function () {
+        wxoLoader.init();
+      };
+      document.head.appendChild(script);
+    });
+  </script>
+</</body>
