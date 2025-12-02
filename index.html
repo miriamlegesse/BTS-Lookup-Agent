@@ -12,8 +12,7 @@
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      background-color: #f4f4f4;
+      align-items      background-color: #f4f4f4;
       font-family: Arial, sans-serif;
     }
     #root {
@@ -23,16 +22,19 @@
       border-radius: 8px;
       overflow: hidden;
       background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <!-- Container where Orchestrate will render the chat -->
-  <div id="root"></div>
+  <div id="root">Loading chat...</div>
 
-  <!-- Orchestrate Embed Loader -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    {
       window.wxOConfiguration = {
         orchestrationID: "20250430-1552-4383-00f2-8e9318aa2f1b_20250501-1814-2773-9095-04757cf91ef5",
         hostURL: "https://dl.watson-orchestrate.ibm.com",
@@ -46,9 +48,19 @@
       const script = document.createElement("script");
       script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
       script.onload = function () {
-        wxoLoader.init();
+        console.log("Orchestrate loader loaded.");
+        if (typeof wxoLoader !== "undefined") {
+          wxoLoader.init();
+          console.log("Chat initialized.");
+        } else {
+          document.getElementById("root").innerText = "Failed to initialize chat.";
+        }
+      };
+      script.onerror = function () {
+        console.error("Failed to load Orchestrate script.");
+        document.getElementById("root").innerText = "Error loading chat.";
       };
       document.head.appendChild(script);
     });
-  </script>
-</</body>
+   </script>
+</body>
