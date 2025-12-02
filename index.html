@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,46 +22,34 @@
       border-radius: 8px;
       overflow: hidden;
       background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 16px;
-      color: #333;
     }
- >
+  </style>
+</head>
 <body>
-  <div id="root">Loading chat...</div>
+  <!-- Container where Orchestrate will render the chat -->
+  <div id="root"></div>
 
+  <!-- Orchestrate LIVE embed script -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      window.wxOConfiguration = {
-        orchestrationID: "20250430-1552-4383-00f2-8e9318aa2f1b_20250501-1814-2773-9095-04757cf91ef5",
-        hostURL: "https://dl.watson-orchestrate.ibm.com",
-        rootElementID: "root",
-        chatOptions: {
-          agentId: "47602a97-e456-4999-9f29-4f132e584862",
-          agentEnvironmentId: "4744eff6-92f8-4757-8cba-453f6a1a1542"
-        }
-      };
+    window.wxOConfiguration = {
+      orchestrationID: "20250430-1552-4383-00f2-8e9318aa2f1b_20250501-1814-2773-9095-04757cf91ef5",
+      hostURL: "https://dl.watson-orchestrate.ibm.com",
+      rootElementID: "root",
+      chatOptions: {
+        agentId: "47602a97-e456-4999-9f29-4f132e584862",
+        agentEnvironmentId: "4744eff6-92f8-4757-8cba-453f6a1a1542"
+      }
+    };
 
-      const script = document.createElement("script");
+    setTimeout(function () {
+      const script = document.createElement('script');
       script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
-      script.onload = function () {
-        console.log("Orchestrate loader loaded.");
-        if (typeof wxoLoader !== "undefined") {
-          wxoLoader.init();
-          console.log("Chat initialized.");
-        } else {
-          document.getElementById("root").innerText = "Failed to initialize chat.";
-        }
-      };
-      script.onerror = function () {
-        console.error("Failed to load Orchestrate script.");
-        document.getElementById("root").innerText = "Error loading chat.";
-      };
+      script.addEventListener('load', function () {
+        wxoLoader.init();
+      });
       document.head.appendChild(script);
-    });
+    }, 0);
   </script>
 </body>
 </html>
-``
+
